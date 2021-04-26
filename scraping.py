@@ -4,60 +4,56 @@ import requests
 
 from bs4 import BeautifulSoup
 
-base_url = 'https://edigital.hu/'
-url = 'https://edigital.hu/notebook-szamitastechnika/adathordozok/ssd-meghajto-c27548'
+base_url = 'https://ipon.hu/shop/termek/'
+product_links = []
+product_prices = []
 
-productlinks = []
-
-for i in range(1, 8):
-    r = requests.get(f'https://edigital.hu/notebook-szamitastechnika/  \
-                     adathordozok/ssd-meghajto-c27548?page={i}')
-    soup = BeautifulSoup(r.content, 'lxml')
+# az összes oldalon végig iterálva elmentjük a linkeket és az árakat
+for page in range(1, 22):
+    r = requests.get(f'https://ipon.hu/shop/group/4055/product/data?page={page}')
+    data = r.json()
+    items = data['items']
     
-    productlist = soup.find_all('div', class_ ='name fitIn') 
-    
-    for item in productlist:
-        for link in item.find_all('a', href=True):
-            productlinks.append(base_url + link['href'])
+    # a termék linkeket és a termék árakat hozzáadjuk a tömbökhöz
+    for i in range(len(items)):
+        product_links.append(base_url + data['items'][i]['slug'] + '/' + str(data['items'][i]['id']))
+        product_prices.append(data['items'][i]['grossPrice'])
 
-
+# a linkeken található információkat eltároljuk
 ssd_array = []
-for link in productlinks:
+for idx, link in enumerate(product_links):
+    # print(idx, ' ', link)
     r = requests.get(link)
     soup = BeautifulSoup(r.content, 'lxml')
     
-    name = soup.find('h1', class_='main-title').text
+    # termék neve
+    name = ' '.join(soup.find('h2', class_='product__title').text.split())
     
+    # termék specifikációit tartalmazó táblázat
     try:
-        price = soup.find('strong', class_='price price--large price--discount').text.replace('Ft', '')
+        table = soup.find('table', attrs={'class':'product-table'})
+        table_body = table.find('tbody')
+        rows = table_body.find_all('tr')
+        
+        values_array = []
+        cols_array = []
+        for row in rows:
+            cols = row.find_all('td')
+            cols_array.append(' '.join(cols[0].text.split()))
+            values_array.append(' '.join(cols[1].text.split()))
     except:
-        pass
-    try:
-        price = soup.find('strong', class_='price price--large').text.replace('Ft', '')
-    except:
-        pass
+        continue
     
-    print(price)
-    values_array = []
-    values = soup.find_all('dd', class_='property-group__value')
-    for i in values:
-        values_array.append(i.text)
-    
-    cols_array = []
-    cols = soup.find_all('dt', class_='property-group__name')
-    for i in cols:
-        cols_array.append(i.text)
-    
-    
+    # dictionary az adatok párosításához
     ssd = {}
-    ssd['name'] = name
+    ssd['Megnevezés'] = name
     for i in range(len(cols_array)):
         ssd[cols_array[i]] = values_array[i]
-    ssd['price'] = price
-            
-    ssd_array.append(ssd)
+    ssd['Ár (FT)'] = product_prices[idx]
     
+    ssd_array.append(ssd)
 
+# kimentjük az adatokat
 df = pd.DataFrame(ssd_array)
+df.to_csv('ssd.csv', index=False, encoding='utf-8')
 
-df.to_csv('ssd.csv', encoding='utf-8')

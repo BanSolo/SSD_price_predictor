@@ -7,7 +7,6 @@ Created on Mon Apr 26 11:23:03 2021
 
 import pandas as pd
 import streamlit as st
-import altair as alt
 #import pickle
 
 def main():
@@ -20,7 +19,7 @@ def main():
     print(sc_y.inverse_transform([[-0.51533502]]))    
     '''
     
-    df = pd.read_csv(r'C:\Projects\SSD_price_predictor\ssd2.csv')
+    #df = pd.read_csv(r'C:\Projects\SSD_price_predictor\ssd2.csv')
     size = st.sidebar.selectbox('Méret', ["Homepage", "Exploration"])
     connection = st.sidebar.selectbox('Csatlakozás', ["123", "refre"])
     tech = st.sidebar.selectbox('Technológia', ["dsadad", "54tgerg"])
@@ -47,7 +46,7 @@ def main():
     if size == "Homepage":
         st.header("This is your data explorer.")
         st.write("Please select a page on the left.")
-        st.write(df)
+        #st.write(df)
     elif size == "Exploration":
         pass
 

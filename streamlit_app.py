@@ -12,11 +12,11 @@ import pickle
 def main():
     
     #f = open(r'C:\Projects\SSD_price_predictor\finalized_model.sav', 'rb')
-    model = pickle.load(open(r'C:\Projects\SSD_price_predictor\finalized_model.sav', 'rb'))
+    model = pickle.load(open('finalized_model.sav', 'rb'))
     #result = loaded_model.score(X_test, Y_test)
-    sc_X = pickle.load(open(r'C:\Projects\SSD_price_predictor\sc_X.sav', 'rb'))
-    sc_y = pickle.load(open(r'.\sc_y.sav', 'rb'))
-    print(sc_y.inverse_transform([[-0.51533502]]))    
+    sc_X = pickle.load(open(r'sc_X.sav', 'rb'))
+    sc_y = pickle.load(open(r'sc_y.sav', 'rb'))
+    #print(sc_y.inverse_transform([[-0.51533502]]))    
     
     
     #df = pd.read_csv(r'C:\Projects\SSD_price_predictor\ssd2.csv')

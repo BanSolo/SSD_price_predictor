@@ -8,6 +8,7 @@ Created on Mon Apr 26 11:23:03 2021
 import pandas as pd
 import streamlit as st
 import pickle
+import sklearn
 
 def main():
     

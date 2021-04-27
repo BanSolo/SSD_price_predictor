@@ -7,17 +7,17 @@ Created on Mon Apr 26 11:23:03 2021
 
 import pandas as pd
 import streamlit as st
-#import pickle
+import pickle
 
 def main():
-    '''
+    
     #f = open(r'C:\Projects\SSD_price_predictor\finalized_model.sav', 'rb')
     model = pickle.load(open(r'C:\Projects\SSD_price_predictor\finalized_model.sav', 'rb'))
     #result = loaded_model.score(X_test, Y_test)
     sc_X = pickle.load(open(r'C:\Projects\SSD_price_predictor\sc_X.sav', 'rb'))
     sc_y = pickle.load(open(r'.\sc_y.sav', 'rb'))
     print(sc_y.inverse_transform([[-0.51533502]]))    
-    '''
+    
     
     #df = pd.read_csv(r'C:\Projects\SSD_price_predictor\ssd2.csv')
     size = st.sidebar.selectbox('Méret', ["Homepage", "Exploration"])
@@ -38,7 +38,7 @@ def main():
     st.image('https://gamespot1.cbsistatic.com/uploads/original/1568/15683559/3224016-intel-optane-memory-review%20conclusion.jpg')
     st.write('Tároló kapacitás ', capacity, ' GB')
     st.write(reading)
-    #st.write(sc_y.inverse_transform([[-0.51533502]]))
+    st.write(sc_y.inverse_transform([[-0.51533502]]))
     
     if button == True:
         st.write('§§§§§§§§§§§§')

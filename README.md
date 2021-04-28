@@ -7,7 +7,7 @@ Az alkalmazás itt érhető el: https://ssd-predictor.herokuapp.com/
 Jelenleg nem nevezhető befejezettnek a projekt, számos helyen a gyors, egyszerű megoldáshoz folyamodtam, de a jövőben folytatódni fog fejlesztés.
 
 A repoban 4 mappa található: 
-    - data: itt található az adathalmaz, amit használtam
-    - notebook: itt van a jupyter notebook fájl, ami tartalmazza a modell fejlesztését
-    - scraping: az adatok internetről való kinyerését tartalmazó python kódot tartalmazza
-    - streamlit: a streamlit alkalmazás kódját és a szükséges fájlokat tartalmazza
+- data: itt található az adathalmaz, amit használtam
+- notebook: itt van a jupyter notebook fájl, ami tartalmazza a modell fejlesztését
+- scraping: az adatok internetről való kinyerését tartalmazó python kódot tartalmazza
+- streamlit: a streamlit alkalmazás kódját és a szükséges fájlokat tartalmazza

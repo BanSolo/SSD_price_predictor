@@ -5,6 +5,9 @@ import numpy as np
 import streamlit as st
 import pickle
 
+
+
+
 def main():
     
     dfasd = pd.read_csv('ssd.csv')
@@ -16,7 +19,7 @@ def main():
     sc_y = pickle.load(open(r'sc_y.sav', 'rb'))
     oh_enc = pickle.load(open(r'oh_enc.sav', 'rb'))
     
-        
+    st.sidebar.header('Paraméterek')
     size = st.sidebar.selectbox('Méret', df['Méret'].unique())
     connection = st.sidebar.selectbox('Csatlakozás', df['Csatlakozás'].unique())
     tech = st.sidebar.selectbox('Technológia', df['Technológia'].unique())
@@ -33,7 +36,7 @@ def main():
     
     st.header('SSD ár becslő alkalmazás')
     st.image('https://gamespot1.cbsistatic.com/uploads/original/1568/15683559/3224016-intel-optane-memory-review%20conclusion.jpg')
-    st.write('Az adathalmaz, amiből a modell tanult')
+    st.write('Az előkészített adathalmaz a modell számára')
     st.write(df)
     
     num_values = sc_X.transform([[capacity, writing, reading]])

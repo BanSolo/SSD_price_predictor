@@ -7,7 +7,7 @@ import pickle
 
 def main():
     
-    df = pd.read_csv('data/prepeared_data.csv')
+    df = pd.read_csv('./data/prepeared_data.csv')
     
     # onjects
     model = pickle.load(open('finalized_model.sav', 'rb'))

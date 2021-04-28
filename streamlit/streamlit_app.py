@@ -7,9 +7,9 @@ import pickle
 
 def main():
     
-    df = pd.read_csv('./data/prepeared_data.csv')
+    df = pd.read_csv('prepeared_data.csv')
     
-    # onjects
+    # objects
     model = pickle.load(open('finalized_model.sav', 'rb'))
     sc_X = pickle.load(open(r'sc_X.sav', 'rb'))
     sc_y = pickle.load(open(r'sc_y.sav', 'rb'))

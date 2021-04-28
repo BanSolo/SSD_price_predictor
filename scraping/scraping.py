@@ -56,5 +56,5 @@ for idx, link in enumerate(product_links):
 
 # kimentjük az adatokat
 df = pd.DataFrame(ssd_array)
-df.to_csv('./data/ssd.csv', index=False, encoding='utf-8')
+#df.to_csv('./data/ssd.csv', index=False, encoding='utf-8')
 

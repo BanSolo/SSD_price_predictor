@@ -3,7 +3,7 @@ A projekt célja, hogy SSD meghajtók árait tudjuk megjósolni a tulajdonságai
 
 Az alkalmazás itt érhető el: https://ssd-predictor.herokuapp.com/
 
-2020.04.28:
+2021.04.28:
 Jelenleg nem nevezhető befejezettnek a projekt, számos helyen a gyors, egyszerű megoldáshoz folyamodtam, de a jövőben folytatódni fog fejlesztés.
 
 A repoban 4 mappa található: 

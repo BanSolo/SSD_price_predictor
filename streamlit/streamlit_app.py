@@ -17,7 +17,7 @@ def main():
     
     # main
     st.header('SSD ár becslő alkalmazás')
-    st.image('https://gamespot1.cbsistatic.com/uploads/original/1568/15683559/3224016-intel-optane-memory-review%20conclusion.jpg')
+    st.image('https://www.gamespot.com/a/uploads/original/1568/15683559/3224017-intel-optane-memory-review%20conclusion.jpg')
     st.write('Az előkészített adathalmaz a modell számára')
     st.write(df)
     
